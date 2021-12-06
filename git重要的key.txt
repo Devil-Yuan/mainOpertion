@@ -1,0 +1,4 @@
+Shift + Alt + U将配置环境 扩展插件信息上传到云端
+Shift + Alt + D下载云端的配置
+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
+f88b273e2ebe90e443559bb88bafde01
