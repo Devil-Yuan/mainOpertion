@@ -1,0 +1,30 @@
+ <el-input
+                type="number"
+                :min="0"
+                step="1"
+                :disabled="scope.row.enable == '0'"
+                onkeypress="return (event.keyCode>=48&&event.keyCode<=57)||event.keyCode==46"
+                @keyup.native="proving($event)"
+                v-model="scope.row.orderSort"
+              ></el-input>
+
+ /**
+    * @方法名称: proving
+    * @功能描述: 只允许输入正整数限制
+    * @参数: 
+    * @作者: Devilyuan
+    * @备注说明:
+    */
+    proving(e){
+      let keynum = window.event? e.keyCode : e.which;
+      if(keynum ==189||keynum==190||keynum==110||keynum==109){
+        e.target.value = ''
+      }
+    },
+
+
+
+
+不确定方法 没有验证过：
+onkeyup="this.value= this.value.match(/\d+(\.\d{0,8})?/) ? this.value.match(/\d+(\.\d{0,8})?/)[0] : ''"
+onKeypress="return(/[\d\.]/.test(String.fromCharCode(event.keyCode)))"

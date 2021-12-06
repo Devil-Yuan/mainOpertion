@@ -1,0 +1,56 @@
+ var beginDate = new Date(
+        this.contractLedgerForm.htContract.beginDate
+      ).getTime();
+      var endDate = new Date(
+        this.contractLedgerForm.htContract.endDate
+      ).getTime();
+      if (beginDate > endDate) {
+        this.$notify({
+          title: "消息提醒",
+          message: "失效日期必须大于生效日期!",
+          type: "warning",
+          duration: 2000
+        });
+        this.checkFlag = true;
+
+法二：
+
+ <el-form-item label="开始时间" prop="beginDate">
+            <el-date-picker
+              v-model="dbdwForm.beginDate"
+              type="date"
+              placeholder="选择日期"
+              format="yyyy-MM-dd"
+              value-format="yyyy-MM-dd"
+              :picker-options="dbdwclickStartTimes"
+            >
+            </el-date-picker>
+          </el-form-item>
+          <el-form-item label="结束时间" prop="endDate">
+            <el-date-picker
+              v-model="dbdwForm.endDate"
+              type="date"
+              placeholder="选择日期"
+              format="yyyy-MM-dd"
+              value-format="yyyy-MM-dd"
+              :picker-options="dbdwclickEndTimes"
+            >
+            </el-date-picker>
+          </el-form-item>
+  dbdwclickStartTimes: {
+        disabledDate: (time) => {
+          if (this.dbdwForm.endDate) {
+            return time.getTime() > new Date(this.dbdwForm.endDate).getTime();
+          }
+        },
+      },
+      dbdwclickEndTimes: {
+        disabledDate: (time) => {
+          if (this.dbdwForm.beginDate) {
+            return (
+              time.getTime() <
+              new Date(this.dbdwForm.beginDate).getTime() - 86400000
+            );
+          }
+        },
+      },

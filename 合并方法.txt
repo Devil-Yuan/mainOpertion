@@ -1,0 +1,31 @@
+// 动态合并单元格 公共方法
+    getSpanArr(data, item) {
+      this.spanArr = [];
+      for (var i = 0; i < data.length; i++) {
+        if (i === 0) {
+          this.spanArr.push(1);
+          this.pos = 0;
+        } else {
+          // 判断当前元素与上一个元素是否相同,因合并第一个所以[0]
+          if (data[i]["orgName"] === data[i - 1]["orgName"]) {
+            this.spanArr[this.pos] += 1;
+            this.spanArr.push(0);
+          } else {
+            this.spanArr.push(1);
+            this.pos = i;
+          }
+        }
+      }
+    },
+    // 动态合并单元格 公共方法
+    objectSpanMethod({ row, column, rowIndex, columnIndex }) {
+      if (columnIndex === 1) {
+        const _row = this.spanArr[rowIndex];
+        const _col = _row > 0 ? 1 : 0;
+        return {
+          rowspan: _row,
+          colspan: _col,
+        };
+      } else {
+      }
+    },

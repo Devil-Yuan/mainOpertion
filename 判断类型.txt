@@ -1,0 +1,1 @@
+Object.prototype.toString.call(this.transDate).match(/\s+(\w+)/)[1] =="Array"
