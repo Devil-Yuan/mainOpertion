@@ -1,0 +1,2 @@
+wx91e3b888978bebda    微信小程序key
+BNFBZ-3KUCK-FKBJ2-AMNCE-ZP2R2-SUBGA  腾讯地图key
